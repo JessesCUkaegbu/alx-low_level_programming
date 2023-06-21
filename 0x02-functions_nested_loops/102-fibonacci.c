@@ -10,9 +10,8 @@ int main(void)
 {
 	int count;
 	long int fibonacci_1 = 1;
-	/* First term in the Fibonacci sequence */
+
 	long int fibonacci_2 = 2;
-	/* second term in the Fibonacci sequence */
 
 	printf("%ld, %ld", fibonacci_1, fibonacci_2);
 
