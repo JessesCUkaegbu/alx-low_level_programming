@@ -1,38 +1,33 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-
+#include <time.h>
 /**
- * main - Entry point
- *
- * Return: Always 0. (Success).
- */
-
-#define PASSWORD_LENGTH 12
-
+*main - program that generates random valid
+*passwords for the program 101-crackme
+*Return: always 0 (Success)
+*/
 int main(void)
 {
-	srand(time(0));
-	/* This should initialize the random number generator with current time */
+	int pass[100];
+	int i, sum, n;
 
-	char password[PASSWORD_LENGTH + 1];
-	/* Parsing for the NULL terminator */
-	int x;
+	sum = 0;
 
-	for (x = 0; x < PASSWORD_LENGTH; x++)
+	srand(time(NULL));
+
+	for (i = 0; i < 100; i++)
 	{
-		password[x] = '!' + rand() % ('~' - '!' + 1);
-		/* 
-		 * Generate a random ASCII character between '!' and
-		 * '~' (visible characters)
-		 */
+		pass[i] = rand() % 78;
+		sum += (pass[i] + '0');
+		putchar(pass[i] + '0');
+		if ((2772 - sum) - '0' < 78)
+		{
+			n = 2772 - sum - '0';
+			sum += n;
+			putchar(n + '0');
+			break;
+		}
 	}
-
-	password[PASSWORD_LENGTH] = '\0';
-	/* By adding the NULL terminator */
-
-	printf("%s\n", password);
-	/* This should print the generated password */
 
 	return (0);
 }
